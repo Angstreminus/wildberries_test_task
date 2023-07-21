@@ -1,8 +1,8 @@
-## Задание
+# Задание
 
 Программа читает из stdin строки, содержащие URL. На каждый URL нужно отправить HTTP-запрос методом GET и посчитать кол-во вхождений строки "Go" в теле ответа. В конце работы приложение выводит на экран общее кол-во найденных строк "Go" во всех переданных URL, например:
 
-```
+```en
 $ cat urls | go run src/cmd/wb-test/main.go
 Count for https://golang.org/: 9
 Count for https://golang.org/doc/: 64
@@ -18,7 +18,7 @@ Total: 253
 
 Для проверки работы используем следующий файл `urls`:
 
-```
+```en
 https://golang.org/
 https://golang.org/doc/
 https://golang.org/pkg/compress/

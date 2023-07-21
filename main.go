@@ -10,14 +10,9 @@ import (
 	"strings"
 )
 
-//! use obly standart tools
-// func ScanString() string {
-// }
-
 func ReadFile() ([]string, error) {
 	file, err := os.Open("urls")
 	if err != nil {
-		fmt.Println("Error while opening file")
 		return nil, err
 	}
 	defer file.Close()
@@ -37,7 +32,6 @@ func MakeRequest(url string) (int, error) {
 	resp, err := http.Get(url)
 
 	if err != nil {
-		log.Fatal(err)
 		return 0, err
 	} else {
 		defer resp.Body.Close()
@@ -52,20 +46,9 @@ func MakeRequest(url string) (int, error) {
 
 			bodyStr := string(body)
 
-			fmt.Println("BODY")
-			fmt.Println(bodyStr)
-			fmt.Println("END")
-
-			bodyStrArr := strings.Split(bodyStr, " ")
-
 			wordCnt := 0
 
-			for _, word := range bodyStrArr {
-				if strings.Compare(substr, word) == 0 {
-					wordCnt++
-				}
-			}
-
+			wordCnt = strings.Count(bodyStr, substr)
 			return wordCnt, nil
 		}
 	}
